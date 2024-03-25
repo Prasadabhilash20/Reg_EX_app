@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Regex Matcher</title>
+</head>
+<body>
+    <h1>Regex Matcher</h1>
+    <form action="/results" method="post">
+        <label for="test_string">Test String:</label>
+        <input type="text" id="test_string" name="test_string" required>
+        <br>
+        <label for="regex">Regular Expression:</label>
+        <input type="text" id="regex" name="regex" required>
+        <br>
+        <button type="submit">Match</button>
+    </form>
+
+    <h2>Matches</h2>
+    <ul>
+        {% if matches %}
+            {% for match in matches %}
+                <li>{{ match }}</li>
+            {% endfor %}
+        {% else %}
+            <li>No matches found.</li>
+        {% endif %}
+    </ul>
+
+    <h2>Email Validation (Optional)</h2>
+    <form action="/validate_email" method="post">
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <button type="submit">Validate</button>
+    </form>
+
+    {% if validation_message %}
+        <p>{{ validation_message }}</p>
+    {% endif %}
+
+</body>
+</html>
